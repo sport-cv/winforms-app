@@ -21,12 +21,13 @@ namespace SportCv
             Application.SetCompatibleTextRenderingDefault(false);
 
             var mainView = new MainView();
+            var cvView = new CvView();
 
             var cvModel = new CvModel();
             var fileModel = new FileModel(cvModel);
 
             var mainController = new MainController(mainView, fileModel, cvModel);
-            var cvController = new CvController(mainView);
+            var cvController = new CvController(mainView, cvView);
 
             mainController.Execute();
 

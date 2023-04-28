@@ -11,16 +11,34 @@ namespace SportCv.Controller
     public class CvController
     {
         private MainView _mainView;
+        private CvView _cvView;
 
-        public CvController(MainView mainView)
+        public CvController(MainView mainView, CvView cvView)
         {
             _mainView = mainView;
             _mainView.NewCv += NewCv;
+            
+            _cvView = cvView;
+            _cvView.BackToMainScreen += BackToMainScreen;
+        }
+
+        private void BackToMainScreen()
+        {
+            _cvView.Hide();
+            _mainView.Show();
         }
 
         private void NewCv()
         {
-            MessageBox.Show("Run New CV event");
+            _mainView.Hide();
+
+            if(_cvView.IsDisposed)
+            {
+                _cvView = new CvView();
+                _cvView.BackToMainScreen += BackToMainScreen;
+            }
+
+            _cvView.Show();
         }
 
     }
