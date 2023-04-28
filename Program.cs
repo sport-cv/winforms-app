@@ -1,4 +1,6 @@
-﻿using SportCv.Views;
+﻿using SportCv.Controller;
+using SportCv.Models;
+using SportCv.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,17 @@ namespace SportCv
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainView());
+
+            var mainView = new MainView();
+
+            var cvModel = new CvModel();
+            var fileModel = new FileModel(cvModel);
+
+            var mainController = new MainController(mainView, fileModel, cvModel);
+
+            mainController.Execute();
+
+            Application.Run(mainView);
         }
     }
 }
