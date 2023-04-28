@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CvController.cs" />
     <Compile Include="Controller\MainController.cs" />
     <Compile Include="Enitities\Cv.cs" />
     <Compile Include="Models\CvModel.cs" />
