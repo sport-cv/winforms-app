@@ -1,4 +1,5 @@
-﻿using SportCv.Views;
+﻿using SportCv.Models;
+using SportCv.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,34 +12,36 @@ namespace SportCv.Controller
     public class CvController
     {
         private MainView _mainView;
-        private CvView _cvView;
+        private CvView _view;
+        private CvModel _model;
 
-        public CvController(MainView mainView, CvView cvView)
+        public CvController(MainView mainView, CvModel model)
         {
             _mainView = mainView;
+            _model = model;
+
             _mainView.NewCv += NewCv;
-            
-            _cvView = cvView;
-            _cvView.BackToMainScreen += BackToMainScreen;
         }
 
         private void BackToMainScreen()
         {
-            _cvView.Hide();
+            _view.Hide();
             _mainView.Show();
+            _mainView.RefreshCVList();
         }
 
         private void NewCv()
         {
+            _view = new CvView();
+            
+            // TODO: must remove other subscription
+            _model.CvWasSavedWithSuccess += _view.AlertCvSaved;
+         
+            _view.BackToMainScreen += BackToMainScreen;
+            _view.SaveCv += _model.SaveCv;
+            
             _mainView.Hide();
-
-            if(_cvView.IsDisposed)
-            {
-                _cvView = new CvView();
-                _cvView.BackToMainScreen += BackToMainScreen;
-            }
-
-            _cvView.Show();
+            _view.Show();
         }
 
     }

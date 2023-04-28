@@ -12,6 +12,8 @@ namespace SportCv.Models
     {
         private List<Cv> _cvList;
 
+        public event Action CvWasSavedWithSuccess;
+
         public CvModel()
         {
             _cvList = new List<Cv>();
@@ -27,6 +29,12 @@ namespace SportCv.Models
         public IEnumerable<Cv> GetCvList()
         {
             return _cvList.ToList();
+        }
+
+        public void SaveCv(Cv cv)
+        {
+            _cvList.Add(cv);
+            CvWasSavedWithSuccess();
         }
     }
 }

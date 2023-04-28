@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SportCv.Enitities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,9 @@ namespace SportCv.Views
     {
         public event Action BackToMainScreen;
 
+        public delegate void SaveCvHandler(Cv cv);
+        public event SaveCvHandler SaveCv;
+
         public CvView()
         {
             InitializeComponent();
@@ -30,6 +34,21 @@ namespace SportCv.Views
             BackToMainScreen();
         }
 
+        private void SaveCvButton_Click(object sender, EventArgs e)
+        {
+            var cv = new Cv
+            {
+                Name = NameTextbox.Text,
+                Email = EmailTextbox.Text
+            };
 
+            SaveCv(cv);
+        }
+
+        public void AlertCvSaved()
+        {
+            // TODO: Remove alert after 5sec
+            AlertLabel.Text = "O CV foi gravado com sucesso.";
+        }
     }
 }

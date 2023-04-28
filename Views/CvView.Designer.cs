@@ -33,6 +33,8 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.SaveCvButton = new System.Windows.Forms.Button();
+            this.AlertLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // NameTextbox
@@ -77,11 +79,31 @@
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // SaveCvButton
+            // 
+            this.SaveCvButton.Location = new System.Drawing.Point(594, 413);
+            this.SaveCvButton.Name = "SaveCvButton";
+            this.SaveCvButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveCvButton.TabIndex = 5;
+            this.SaveCvButton.Text = "Gravar CV";
+            this.SaveCvButton.UseVisualStyleBackColor = true;
+            this.SaveCvButton.Click += new System.EventHandler(this.SaveCvButton_Click);
+            // 
+            // AlertLabel
+            // 
+            this.AlertLabel.AutoSize = true;
+            this.AlertLabel.Location = new System.Drawing.Point(594, 2);
+            this.AlertLabel.Name = "AlertLabel";
+            this.AlertLabel.Size = new System.Drawing.Size(0, 13);
+            this.AlertLabel.TabIndex = 6;
+            // 
             // CvView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AlertLabel);
+            this.Controls.Add(this.SaveCvButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.NameLabel);
@@ -102,5 +124,7 @@
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button SaveCvButton;
+        private System.Windows.Forms.Label AlertLabel;
     }
 }
