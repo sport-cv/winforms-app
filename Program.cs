@@ -24,7 +24,7 @@ namespace SportCv
 
             var cvModel = new CvModel();
             var fileModel = new FileModel(cvModel);
-            var pdfModel = new PdfModel();
+            var pdfModel = new PdfModel(cvModel);
 
             var mainController = new MainController(mainView, fileModel, cvModel);
             var cvController = new CvController(mainView, cvModel);

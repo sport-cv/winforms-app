@@ -21,9 +21,9 @@ namespace SportCv.Controller
             _model = model;
         }
 
-        private void ExportAllToPdf(string filePath)
+        private void ExportAllToPdf(string filePath, string clubName)
         {
-            _model.Export(filePath);
+            _model.Export(filePath, clubName);
         }
 
         private void ExportToPdf()
