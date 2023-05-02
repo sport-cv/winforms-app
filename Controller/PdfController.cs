@@ -1,4 +1,5 @@
-﻿using SportCv.Views;
+﻿using SportCv.Models;
+using SportCv.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +12,25 @@ namespace SportCv.Controller
     {
         private MainView _mainView;
         private PdfView _view;
+        private PdfModel _model;
 
-        public PdfController(MainView mainView)
+        public PdfController(MainView mainView, PdfModel model)
         {
             _mainView = mainView;
             _mainView.ExportToPdf += ExportToPdf;
+            _model = model;
+        }
+
+        private void ExportAllToPdf(string filePath)
+        {
+            _model.Export(filePath);
         }
 
         private void ExportToPdf()
         {
             _view = new PdfView();
             _mainView.Hide();
+            _view.ExportAllToPdf += ExportAllToPdf;
             _view.Show();
         }
     }
