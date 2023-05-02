@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Controller\CvController.cs" />
     <Compile Include="Controller\MainController.cs" />
+    <Compile Include="Controller\PdfController.cs" />
     <Compile Include="Enitities\Cv.cs" />
     <Compile Include="Models\CvModel.cs" />
     <Compile Include="Models\FileModel.cs" />
@@ -67,6 +68,12 @@
     </Compile>
     <Compile Include="Views\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PdfView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PdfView.Designer.cs">
+      <DependentUpon>PdfView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
