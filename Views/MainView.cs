@@ -20,6 +20,8 @@ namespace SportCv.Views
         public delegate void OpenFileHandler(string filePath);
         public event OpenFileHandler OpenFile;
 
+        public event Action NewCv; 
+
         public MainView()
         {
             InitializeComponent();
@@ -48,6 +50,11 @@ namespace SportCv.Views
             {
                 CvListbox.Items.Add($"{cv.Name}");
             }     
+        }
+
+        private void NewCvButton_Click(object sender, EventArgs e)
+        {
+            NewCv();
         }
     }
 }

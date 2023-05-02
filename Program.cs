@@ -26,6 +26,7 @@ namespace SportCv
             var fileModel = new FileModel(cvModel);
 
             var mainController = new MainController(mainView, fileModel, cvModel);
+            var cvController = new CvController(mainView, cvModel);
 
             mainController.Execute();
 
