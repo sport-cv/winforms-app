@@ -35,6 +35,7 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.SaveCvButton = new System.Windows.Forms.Button();
             this.AlertLabel = new System.Windows.Forms.Label();
+            this.ExportToPdfButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // NameTextbox
@@ -97,11 +98,22 @@
             this.AlertLabel.Size = new System.Drawing.Size(0, 13);
             this.AlertLabel.TabIndex = 6;
             // 
+            // ExportToPdfButton
+            // 
+            this.ExportToPdfButton.Location = new System.Drawing.Point(491, 413);
+            this.ExportToPdfButton.Name = "ExportToPdfButton";
+            this.ExportToPdfButton.Size = new System.Drawing.Size(75, 23);
+            this.ExportToPdfButton.TabIndex = 7;
+            this.ExportToPdfButton.Text = "Exportar";
+            this.ExportToPdfButton.UseVisualStyleBackColor = true;
+            this.ExportToPdfButton.Click += new System.EventHandler(this.ExportToPdfButton_Click);
+            // 
             // CvView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ExportToPdfButton);
             this.Controls.Add(this.AlertLabel);
             this.Controls.Add(this.SaveCvButton);
             this.Controls.Add(this.CancelButton);
@@ -126,5 +138,6 @@
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button SaveCvButton;
         private System.Windows.Forms.Label AlertLabel;
+        private System.Windows.Forms.Button ExportToPdfButton;
     }
 }

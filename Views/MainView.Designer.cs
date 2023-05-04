@@ -31,6 +31,7 @@
             this.OpenFileButton = new System.Windows.Forms.Button();
             this.CvListbox = new System.Windows.Forms.ListBox();
             this.NewCvButton = new System.Windows.Forms.Button();
+            this.ExportToPdfButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // OpenFileButton
@@ -61,11 +62,22 @@
             this.NewCvButton.UseVisualStyleBackColor = true;
             this.NewCvButton.Click += new System.EventHandler(this.NewCvButton_Click);
             // 
+            // ExportToPdfButton
+            // 
+            this.ExportToPdfButton.Location = new System.Drawing.Point(332, 231);
+            this.ExportToPdfButton.Name = "ExportToPdfButton";
+            this.ExportToPdfButton.Size = new System.Drawing.Size(75, 40);
+            this.ExportToPdfButton.TabIndex = 3;
+            this.ExportToPdfButton.Text = "Exportar todos";
+            this.ExportToPdfButton.UseVisualStyleBackColor = true;
+            this.ExportToPdfButton.Click += new System.EventHandler(this.ExportToPdfButton_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ExportToPdfButton);
             this.Controls.Add(this.NewCvButton);
             this.Controls.Add(this.CvListbox);
             this.Controls.Add(this.OpenFileButton);
@@ -80,5 +92,6 @@
         private System.Windows.Forms.Button OpenFileButton;
         private System.Windows.Forms.ListBox CvListbox;
         private System.Windows.Forms.Button NewCvButton;
+        private System.Windows.Forms.Button ExportToPdfButton;
     }
 }

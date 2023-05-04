@@ -19,6 +19,8 @@ namespace SportCv.Views
         public delegate void SaveCvHandler(Cv cv);
         public event SaveCvHandler SaveCv;
 
+        public event Action ExportToPdf;
+
         public CvView()
         {
             InitializeComponent();
@@ -49,6 +51,11 @@ namespace SportCv.Views
         {
             // TODO: Remove alert after 5sec
             AlertLabel.Text = "O CV foi gravado com sucesso.";
+        }
+
+        private void ExportToPdfButton_Click(object sender, EventArgs e)
+        {
+            ExportToPdf();
         }
     }
 }

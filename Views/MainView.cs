@@ -20,7 +20,9 @@ namespace SportCv.Views
         public delegate void OpenFileHandler(string filePath);
         public event OpenFileHandler OpenFile;
 
-        public event Action NewCv; 
+        public event Action NewCv;
+
+        public event Action ExportToPdf;
 
         public MainView()
         {
@@ -55,6 +57,11 @@ namespace SportCv.Views
         private void NewCvButton_Click(object sender, EventArgs e)
         {
             NewCv();
+        }
+
+        private void ExportToPdfButton_Click(object sender, EventArgs e)
+        {
+            ExportToPdf();
         }
     }
 }
