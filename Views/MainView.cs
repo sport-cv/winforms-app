@@ -1,4 +1,4 @@
-﻿using SportCv.Enitities;
+﻿using SportCv.Entities;
 using SportCv.Models;
 using System;
 using System.Collections.Generic;
@@ -14,19 +14,42 @@ namespace SportCv.Views
 {
     public partial class MainView : Form
     {
-        public delegate IEnumerable<Cv> LoadCvListHandler();
-        public event LoadCvListHandler LoadCvList;
+        private readonly CvModel _cvModel;
 
-        public delegate void OpenFileHandler(string filePath);
-        public event OpenFileHandler OpenFile;
+        public delegate void FileOpenHandler(string fileName);
+        public event FileOpenHandler OnFileOpen;
 
-        public event Action NewCv;
+        public delegate void FileSaveHandler(string fileName);
+        public event FileSaveHandler OnFileSave;
 
-        public event Action ExportToPdf;
+        public delegate void EditCvHandler(string cvId);
+        public event EditCvHandler OnEditCv;
 
-        public MainView()
+        public delegate void ExportAllToPdfHandler(IEnumerable<string> idsToExport);
+        public ExportAllToPdfHandler OnExportAllToPdf;
+
+        public Action OnNewCv;
+
+        public MainView(CvModel cvModel)
         {
             InitializeComponent();
+            _cvModel = cvModel;
+        }
+
+        public void RefreshCvListbox()
+        {
+            var cvList = _cvModel.GetAllCvs();
+            CvListbox.Items.Clear();
+            
+            foreach (var cv in cvList)
+            {
+                CvListbox.Items.Add($"{cv.Name}");
+            }
+        }
+
+        public void SaveFileAlert()
+        {
+            MessageBox.Show("O ficheiro foi gravado com sucesso.");
         }
 
         private void OpenFileButton_Click(object sender, EventArgs e)
@@ -39,29 +62,37 @@ namespace SportCv.Views
 
             if(openFileDialog.ShowDialog() == DialogResult.OK )
             {
-                OpenFile(openFileDialog.FileName);
+                OnFileOpen(openFileDialog.FileName);
             }
-        }
-
-        public void RefreshCVList()
-        {
-            CvListbox.Items.Clear();
-            var cvList = LoadCvList();
-
-            foreach (var cv in cvList)
-            {
-                CvListbox.Items.Add($"{cv.Name}");
-            }     
         }
 
         private void NewCvButton_Click(object sender, EventArgs e)
         {
-            NewCv();
+            OnNewCv();
         }
-
+        private void EditCVButton_Click(object sender, EventArgs e)
+        {
+            OnEditCv(CvListbox.SelectedItem.ToString());
+        }
         private void ExportToPdfButton_Click(object sender, EventArgs e)
         {
-            ExportToPdf();
+            var idsToExport = new string[CvListbox.Items.Count];
+            CvListbox.Items.CopyTo(idsToExport, 0);
+            OnExportAllToPdf(idsToExport);
+        }
+
+        private void SaveFileButton_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog
+            {
+                Filter = "JSON Files (*.json)|*.json",
+                Title = "Guardar Ficheiro JSON"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                OnFileSave(saveFileDialog.FileName);
+            }
         }
     }
 }

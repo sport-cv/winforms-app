@@ -55,12 +55,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\CvController.cs" />
-    <Compile Include="Controller\MainController.cs" />
-    <Compile Include="Controller\PdfController.cs" />
-    <Compile Include="Enitities\Cv.cs" />
+    <Compile Include="Controllers\CvController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\PdfController.cs" />
+    <Compile Include="Entities\Cv.cs" />
+    <Compile Include="Entities\Header.cs" />
     <Compile Include="Models\CvModel.cs" />
-    <Compile Include="Models\FileModel.cs" />
+    <Compile Include="Models\JsonModel.cs" />
     <Compile Include="Models\PdfModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
