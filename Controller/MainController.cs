@@ -10,30 +10,24 @@ namespace SportCv.Controller
 {
     public class MainController
     {
-        private MainView _mainView;
-        private FileModel _fileModel;
-        private CvModel _cvModel;
+        private MainView _view;
+        private JsonModel _jsonModel;
 
-        public MainController(MainView mainView, FileModel fileModel, CvModel cvModel)
+        public MainController(MainView view, JsonModel jsonModel)
         {
-            _mainView = mainView;
-            _fileModel = fileModel;
-            _cvModel = cvModel;
+            _view = view;
+            _jsonModel = jsonModel;
 
-            _mainView.OpenFile += OpenFile;
-            _mainView.LoadCvList += _cvModel.GetCvList;
+            _jsonModel.OnFileLoaded += _view.RefreshCvListbox;
+            _jsonModel.OnFileSaved += _view.SaveFileAlert;
 
-            _fileModel.FileLoaded += _mainView.RefreshCVList;
+            _view.OnFileOpen += _jsonModel.ReadFile;
+            _view.OnFileSave += _jsonModel.WriteFile;
         }
 
         public void Execute()
         {
-            _mainView.Show();
-        }
-
-        private void OpenFile(string filePath)
-        {
-            _fileModel.ReadFile(filePath);
+            _view.Show();
         }
     }
 }

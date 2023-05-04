@@ -1,4 +1,5 @@
-﻿using SportCv.Models;
+﻿using SportCv.Entities;
+using SportCv.Models;
 using SportCv.Views;
 using System;
 using System.Collections.Generic;
@@ -11,55 +12,48 @@ namespace SportCv.Controller
 {
     public class CvController
     {
-        private MainView _mainView;
         private CvView _view;
         private CvModel _model;
+        private MainView _mainView;
 
-        public CvController(MainView mainView, CvModel model)
+        public CvController(CvView view, CvModel model, MainView mainView)
         {
-            _mainView = mainView;
+            _view = view;
             _model = model;
+            _mainView = mainView;
 
-            _mainView.NewCv += NewCv;
-            _mainView.EditCv += EditCV;
+            _view.OnSaveCv += _model.SaveCv;
+            _view.OnExit += HideView;
+
+            _model.OnSaveSuccess += _view.SaveAlert;
+
+            _mainView.OnEditCv += EditCv;
+            _mainView.OnNewCv += NewCv;
         }
 
-        private void EditCV(string name)
+        private void EditCv(string cvId)
         {
-            _view = CreateCvView();
-            _mainView.Hide();
-            _view.Show();
-            _model.LoadCvToEdit(name);
-        }
-
-        private void BackToMainScreen()
-        {
-            _view.Hide();
-            _mainView.Show();
-            _mainView.RefreshCVList();
+            _view.RefreshControls(cvId);
+            ShowView();
         }
 
         private void NewCv()
         {
-            _view = CreateCvView();
+            _view.ClearControls();
+            ShowView();
+        }
+
+        private void ShowView() 
+        {
             _mainView.Hide();
             _view.Show();
         }
 
-        private CvView CreateCvView()
+        private void HideView()
         {
-            var view = new CvView();
-
-            // TODO: must remove other subscription
-            _model.CvWasSavedWithSuccess += view.AlertCvSaved;
-            _model.CvToEditLoaded += view.UpdateCvFormControls;
-
-            view.BackToMainScreen += BackToMainScreen;
-            view.SaveCv += _model.SaveCv;
-            view.LoadCvToEdit += _model.GetCvToEdit;
-
-            return view;
+            _view.Hide();
+            _mainView.RefreshCvListbox();
+            _mainView.Show();
         }
-
     }
 }

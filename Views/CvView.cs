@@ -1,4 +1,5 @@
-﻿using SportCv.Enitities;
+﻿using SportCv.Entities;
+using SportCv.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,29 +15,20 @@ namespace SportCv.Views
 
     public partial class CvView : Form
     {
-        public event Action BackToMainScreen;
+        private CvModel _cvModel;
 
         public delegate void SaveCvHandler(Cv cv);
-        public event SaveCvHandler SaveCv;
+        public event SaveCvHandler OnSaveCv;
 
-        public delegate Cv LoadCvToEditHandler();
-        public event LoadCvToEditHandler LoadCvToEdit;
+        public event Action OnExit;
 
-        public event Action ExportToPdf;
+        public delegate void ExportToPdfHandler(string idToExport);
+        public event ExportToPdfHandler OnExportToPdf;
 
-        public CvView()
+        public CvView(CvModel cvModel)
         {
             InitializeComponent();
-        }
-
-        private void CancelButton_Click(object sender, EventArgs e)
-        {
-            BackToMainScreen();
-        }
-
-        private void OnClose(object sender, FormClosedEventArgs e)
-        {
-            BackToMainScreen();
+            _cvModel = cvModel;
         }
 
         private void SaveCvButton_Click(object sender, EventArgs e)
@@ -47,25 +39,47 @@ namespace SportCv.Views
                 Email = EmailTextbox.Text
             };
 
-            SaveCv(cv);
+            OnSaveCv(cv);
         }
 
-        public void AlertCvSaved()
+        private void ExportToPdfButton_Click(object sender, EventArgs e)
         {
-            // TODO: Remove alert after 5sec
-            AlertLabel.Text = "O CV foi gravado com sucesso.";
+            OnExportToPdf(NameTextbox.Text);
         }
 
-        public void UpdateCvFormControls()
+        private void CancelButton_Click(object sender, EventArgs e)
         {
-            var cv = LoadCvToEdit();
+            OnExit();
+        }
 
+        public void RefreshControls(string cvId)
+        {
+            var cv = _cvModel.GetCv(cvId);
+            
             NameTextbox.Text = cv.Name;
             EmailTextbox.Text = cv.Email;
         }
-        private void ExportToPdfButton_Click(object sender, EventArgs e)
+
+        public void ClearControls()
         {
-            ExportToPdf();
+            NameTextbox.Text = "";
+            EmailTextbox.Text = "";
+        }
+
+        public void SaveAlert()
+        {
+            MessageBox.Show("CV foi guardado com sucesso!");
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            if (e.CloseReason != CloseReason.WindowsShutDown && e.CloseReason != CloseReason.ApplicationExitCall)
+            {
+                e.Cancel = true;
+                OnExit();
+            }
         }
     }
 }

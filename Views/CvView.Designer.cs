@@ -32,7 +32,7 @@
             this.EmailTextbox = new System.Windows.Forms.TextBox();
             this.NameLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.SaveCvButton = new System.Windows.Forms.Button();
             this.AlertLabel = new System.Windows.Forms.Label();
             this.ExportToPdfButton = new System.Windows.Forms.Button();
@@ -70,19 +70,19 @@
             this.EmailLabel.TabIndex = 3;
             this.EmailLabel.Text = "Email";
             // 
-            // CancelButton
+            // ExitButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(675, 413);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 4;
-            this.CancelButton.Text = "Cancelar";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.ExitButton.Location = new System.Drawing.Point(713, 413);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(75, 23);
+            this.ExitButton.TabIndex = 4;
+            this.ExitButton.Text = "Sair";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SaveCvButton
             // 
-            this.SaveCvButton.Location = new System.Drawing.Point(594, 413);
+            this.SaveCvButton.Location = new System.Drawing.Point(632, 413);
             this.SaveCvButton.Name = "SaveCvButton";
             this.SaveCvButton.Size = new System.Drawing.Size(75, 23);
             this.SaveCvButton.TabIndex = 5;
@@ -100,7 +100,7 @@
             // 
             // ExportToPdfButton
             // 
-            this.ExportToPdfButton.Location = new System.Drawing.Point(491, 413);
+            this.ExportToPdfButton.Location = new System.Drawing.Point(12, 415);
             this.ExportToPdfButton.Name = "ExportToPdfButton";
             this.ExportToPdfButton.Size = new System.Drawing.Size(75, 23);
             this.ExportToPdfButton.TabIndex = 7;
@@ -116,14 +116,13 @@
             this.Controls.Add(this.ExportToPdfButton);
             this.Controls.Add(this.AlertLabel);
             this.Controls.Add(this.SaveCvButton);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.EmailTextbox);
             this.Controls.Add(this.NameTextbox);
             this.Name = "CvView";
             this.Text = "CvView";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OnClose);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,7 +134,7 @@
         private System.Windows.Forms.TextBox EmailTextbox;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label EmailLabel;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button SaveCvButton;
         private System.Windows.Forms.Label AlertLabel;
         private System.Windows.Forms.Button ExportToPdfButton;

@@ -20,15 +20,19 @@ namespace SportCv
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var mainView = new MainView();
 
             var cvModel = new CvModel();
-            var fileModel = new FileModel(cvModel);
+            var fileModel = new JsonModel(cvModel);
             var pdfModel = new PdfModel(cvModel);
 
-            var mainController = new MainController(mainView, fileModel, cvModel);
-            var cvController = new CvController(mainView, cvModel);
-            var pdfController = new PdfController(mainView, pdfModel);
+            var mainView = new MainView(cvModel);
+            var cvView = new CvView(cvModel);
+            var pdfView = new PdfView();
+
+
+            var mainController = new MainController(mainView, fileModel);
+            _ = new CvController(cvView, cvModel, mainView);
+            _ = new PdfController(pdfView, pdfModel, mainView, cvView);
 
             mainController.Execute();
 

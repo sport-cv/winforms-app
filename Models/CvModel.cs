@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
-using SportCv.Enitities;
+using SportCv.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,49 +12,48 @@ namespace SportCv.Models
     public class CvModel
     {
         private List<Cv> _cvList;
-        private Cv _cvToEdit;
 
-        public event Action CvWasSavedWithSuccess;
-        public event Action CvToEditLoaded;
+        public event Action OnSaveSuccess;
 
         public CvModel()
         {
             _cvList = new List<Cv>();
         }
 
-        public bool LoadCvData(string data)
-        {
-            _cvList = JsonConvert.DeserializeObject<List<Cv>>(data);
-
-            return _cvList.Count > 0;
-        }
-
-        public IEnumerable<Cv> GetCvList()
+        public IEnumerable<Cv> GetAllCvs()
         {
             return _cvList.ToList();
         }
 
-        public Cv GetCvToEdit()
+        public Cv GetCv(string cvId)
         {
-            return _cvToEdit;
-        }
+            var cv = _cvList.FirstOrDefault(c => c.Name == cvId);
 
-        public void SaveCv(Cv cv)
-        {
-            _cvList.Add(cv);
-            CvWasSavedWithSuccess();
-        }
-
-        public void LoadCvToEdit(string name)
-        {
-            _cvToEdit = _cvList.FirstOrDefault(cv => cv.Name == name);
-
-            if(_cvToEdit == null)
+            if (cv == null)
             {
                 throw new Exception("CV to Edit not found");
             }
 
-            CvToEditLoaded();
+            return cv;
+        }
+
+        public void SaveCv(Cv cvToSave)
+        {
+            var cv = _cvList.FirstOrDefault(c => c.Name == cvToSave.Name);
+
+            if (cv != null)
+            {
+                _cvList.Remove(cv);
+            }
+
+            _cvList.Add(cvToSave);
+
+            OnSaveSuccess();
+        }
+
+        public void ResetList(IEnumerable<Cv> cvList)
+        {
+            _cvList = cvList.ToList();
         }
     }
 }
