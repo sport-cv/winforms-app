@@ -1,4 +1,4 @@
-﻿using SportCv.Controller;
+﻿using SportCv.Controllers;
 using SportCv.Models;
 using SportCv.Views;
 using System;
@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace SportCv
 {
-    internal static class Program
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.

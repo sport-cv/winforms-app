@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SportCv.Controller
+namespace SportCv.Controllers
 {
     public class CvController
     {

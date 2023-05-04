@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SportCv.Controller
+namespace SportCv.Controllers
 {
     public class MainController
     {
