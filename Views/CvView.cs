@@ -19,6 +19,9 @@ namespace SportCv.Views
         public delegate void SaveCvHandler(Cv cv);
         public event SaveCvHandler SaveCv;
 
+        public delegate Cv LoadCvToEditHandler();
+        public event LoadCvToEditHandler LoadCvToEdit;
+
         public event Action ExportToPdf;
 
         public CvView()
@@ -53,6 +56,13 @@ namespace SportCv.Views
             AlertLabel.Text = "O CV foi gravado com sucesso.";
         }
 
+        public void UpdateCvFormControls()
+        {
+            var cv = LoadCvToEdit();
+
+            NameTextbox.Text = cv.Name;
+            EmailTextbox.Text = cv.Email;
+        }
         private void ExportToPdfButton_Click(object sender, EventArgs e)
         {
             ExportToPdf();

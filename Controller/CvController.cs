@@ -21,6 +21,15 @@ namespace SportCv.Controller
             _model = model;
 
             _mainView.NewCv += NewCv;
+            _mainView.EditCv += EditCV;
+        }
+
+        private void EditCV(string name)
+        {
+            _view = CreateCvView();
+            _mainView.Hide();
+            _view.Show();
+            _model.LoadCvToEdit(name);
         }
 
         private void BackToMainScreen()
@@ -32,16 +41,24 @@ namespace SportCv.Controller
 
         private void NewCv()
         {
-            _view = new CvView();
-            
-            // TODO: must remove other subscription
-            _model.CvWasSavedWithSuccess += _view.AlertCvSaved;
-         
-            _view.BackToMainScreen += BackToMainScreen;
-            _view.SaveCv += _model.SaveCv;
-            
+            _view = CreateCvView();
             _mainView.Hide();
             _view.Show();
+        }
+
+        private CvView CreateCvView()
+        {
+            var view = new CvView();
+
+            // TODO: must remove other subscription
+            _model.CvWasSavedWithSuccess += view.AlertCvSaved;
+            _model.CvToEditLoaded += view.UpdateCvFormControls;
+
+            view.BackToMainScreen += BackToMainScreen;
+            view.SaveCv += _model.SaveCv;
+            view.LoadCvToEdit += _model.GetCvToEdit;
+
+            return view;
         }
 
     }

@@ -32,11 +32,12 @@
             this.CvListbox = new System.Windows.Forms.ListBox();
             this.NewCvButton = new System.Windows.Forms.Button();
             this.ExportToPdfButton = new System.Windows.Forms.Button();
+            this.EditCVButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // OpenFileButton
             // 
-            this.OpenFileButton.Location = new System.Drawing.Point(53, 200);
+            this.OpenFileButton.Location = new System.Drawing.Point(53, 176);
             this.OpenFileButton.Name = "OpenFileButton";
             this.OpenFileButton.Size = new System.Drawing.Size(75, 45);
             this.OpenFileButton.TabIndex = 0;
@@ -54,7 +55,7 @@
             // 
             // NewCvButton
             // 
-            this.NewCvButton.Location = new System.Drawing.Point(332, 200);
+            this.NewCvButton.Location = new System.Drawing.Point(260, 248);
             this.NewCvButton.Name = "NewCvButton";
             this.NewCvButton.Size = new System.Drawing.Size(75, 23);
             this.NewCvButton.TabIndex = 2;
@@ -64,7 +65,7 @@
             // 
             // ExportToPdfButton
             // 
-            this.ExportToPdfButton.Location = new System.Drawing.Point(332, 231);
+            this.ExportToPdfButton.Location = new System.Drawing.Point(134, 277);
             this.ExportToPdfButton.Name = "ExportToPdfButton";
             this.ExportToPdfButton.Size = new System.Drawing.Size(75, 40);
             this.ExportToPdfButton.TabIndex = 3;
@@ -72,11 +73,22 @@
             this.ExportToPdfButton.UseVisualStyleBackColor = true;
             this.ExportToPdfButton.Click += new System.EventHandler(this.ExportToPdfButton_Click);
             // 
+            // EditCVButton
+            // 
+            this.EditCVButton.Location = new System.Drawing.Point(260, 176);
+            this.EditCVButton.Name = "EditCVButton";
+            this.EditCVButton.Size = new System.Drawing.Size(75, 23);
+            this.EditCVButton.TabIndex = 4;
+            this.EditCVButton.Text = "Abrir CV";
+            this.EditCVButton.UseVisualStyleBackColor = true;
+            this.EditCVButton.Click += new System.EventHandler(this.EditCVButton_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.EditCVButton);
             this.Controls.Add(this.ExportToPdfButton);
             this.Controls.Add(this.NewCvButton);
             this.Controls.Add(this.CvListbox);
@@ -93,5 +105,6 @@
         private System.Windows.Forms.ListBox CvListbox;
         private System.Windows.Forms.Button NewCvButton;
         private System.Windows.Forms.Button ExportToPdfButton;
+        private System.Windows.Forms.Button EditCVButton;
     }
 }

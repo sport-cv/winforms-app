@@ -20,9 +20,12 @@ namespace SportCv.Views
         public delegate void OpenFileHandler(string filePath);
         public event OpenFileHandler OpenFile;
 
-        public event Action NewCv;
+        public delegate void EditCvHandler(string name);
+        public event EditCvHandler EditCv;
 
+        public event Action NewCv;
         public event Action ExportToPdf;
+
 
         public MainView()
         {
@@ -62,6 +65,11 @@ namespace SportCv.Views
         private void ExportToPdfButton_Click(object sender, EventArgs e)
         {
             ExportToPdf();
+        }
+
+        private void EditCVButton_Click(object sender, EventArgs e)
+        {
+            EditCv(CvListbox.SelectedItem.ToString());
         }
     }
 }
