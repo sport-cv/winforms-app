@@ -55,9 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\CvController.cs" />
-    <Compile Include="Controller\MainController.cs" />
-    <Compile Include="Controller\PdfController.cs" />
+    <Compile Include="Controllers\CvController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\PdfController.cs" />
     <Compile Include="Entities\Cv.cs" />
     <Compile Include="Entities\Header.cs" />
     <Compile Include="Models\CvModel.cs" />
