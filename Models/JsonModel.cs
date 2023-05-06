@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SportCv.Entities;
+using SportCv.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,9 +27,13 @@ namespace SportCv.Models
         {
             var jsonText = File.ReadAllText(filePath);
             var list = JsonConvert.DeserializeObject<IEnumerable<Cv>>(jsonText);
-            
-            _cvModel.ResetList(list);
-                
+
+            if (list.Count() == 0)
+            {
+                throw new EmptyListException("Não foram carregados Cvs.");
+            }
+
+            _cvModel.ResetList(list);                
             OnFileLoaded();
         }
 

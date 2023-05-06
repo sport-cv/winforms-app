@@ -1,10 +1,13 @@
-﻿using SportCv.Entities;
+﻿using Newtonsoft.Json;
+using SportCv.Entities;
+using SportCv.Exceptions;
 using SportCv.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,7 +65,22 @@ namespace SportCv.Views
 
             if(openFileDialog.ShowDialog() == DialogResult.OK )
             {
-                OnFileOpen(openFileDialog.FileName);
+                try
+                {
+                    OnFileOpen(openFileDialog.FileName);
+                }
+                catch (EmptyListException ex)
+                {
+                    MessageBox.Show($"ATENÇÃO: {ex.Message}");   
+                }
+                catch (JsonReaderException)
+                {
+                    MessageBox.Show("ERRO: O ficheiro JSON escolhido tem uma estrutura inválida.");
+                }
+                catch(IOException)
+                {
+                    MessageBox.Show("ERRO: Não foi possível ler o ficheiro");
+                }
             }
         }
 
@@ -72,6 +90,12 @@ namespace SportCv.Views
         }
         private void EditCVButton_Click(object sender, EventArgs e)
         {
+           if(CvListbox.SelectedItem  == null)
+            {
+                MessageBox.Show("Primeiro tem que selecionar um CV para o editar.");
+                return;
+            }
+
             OnEditCv(CvListbox.SelectedItem.ToString());
         }
         private void ExportToPdfButton_Click(object sender, EventArgs e)
