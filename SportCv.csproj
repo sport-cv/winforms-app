@@ -60,6 +60,7 @@
     <Compile Include="Controllers\PdfController.cs" />
     <Compile Include="Entities\Cv.cs" />
     <Compile Include="Entities\Header.cs" />
+    <Compile Include="Exceptions\EmptyListException.cs" />
     <Compile Include="Models\CvModel.cs" />
     <Compile Include="Models\JsonModel.cs" />
     <Compile Include="Models\PdfModel.cs" />
