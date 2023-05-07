@@ -40,51 +40,51 @@
             // 
             // NameTextbox
             // 
-            this.NameTextbox.Location = new System.Drawing.Point(196, 135);
+            this.NameTextbox.Location = new System.Drawing.Point(28, 37);
             this.NameTextbox.Name = "NameTextbox";
-            this.NameTextbox.Size = new System.Drawing.Size(100, 20);
+            this.NameTextbox.Size = new System.Drawing.Size(137, 20);
             this.NameTextbox.TabIndex = 0;
             // 
             // EmailTextbox
             // 
-            this.EmailTextbox.Location = new System.Drawing.Point(196, 171);
+            this.EmailTextbox.Location = new System.Drawing.Point(28, 85);
             this.EmailTextbox.Name = "EmailTextbox";
-            this.EmailTextbox.Size = new System.Drawing.Size(100, 20);
+            this.EmailTextbox.Size = new System.Drawing.Size(137, 20);
             this.EmailTextbox.TabIndex = 1;
             // 
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(155, 141);
+            this.NameLabel.Location = new System.Drawing.Point(25, 21);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(35, 13);
+            this.NameLabel.Size = new System.Drawing.Size(38, 13);
             this.NameLabel.TabIndex = 2;
-            this.NameLabel.Text = "Nome";
+            this.NameLabel.Text = "Nome:";
             // 
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(155, 177);
+            this.EmailLabel.Location = new System.Drawing.Point(25, 69);
             this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(32, 13);
+            this.EmailLabel.Size = new System.Drawing.Size(35, 13);
             this.EmailLabel.TabIndex = 3;
-            this.EmailLabel.Text = "Email";
+            this.EmailLabel.Text = "Email:";
             // 
             // ExitButton
             // 
-            this.ExitButton.Location = new System.Drawing.Point(713, 413);
+            this.ExitButton.Location = new System.Drawing.Point(27, 200);
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(75, 23);
+            this.ExitButton.Size = new System.Drawing.Size(138, 39);
             this.ExitButton.TabIndex = 4;
-            this.ExitButton.Text = "Sair";
+            this.ExitButton.Text = "Voltar";
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SaveCvButton
             // 
-            this.SaveCvButton.Location = new System.Drawing.Point(632, 413);
+            this.SaveCvButton.Location = new System.Drawing.Point(27, 155);
             this.SaveCvButton.Name = "SaveCvButton";
-            this.SaveCvButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveCvButton.Size = new System.Drawing.Size(138, 39);
             this.SaveCvButton.TabIndex = 5;
             this.SaveCvButton.Text = "Gravar CV";
             this.SaveCvButton.UseVisualStyleBackColor = true;
@@ -100,9 +100,9 @@
             // 
             // ExportToPdfButton
             // 
-            this.ExportToPdfButton.Location = new System.Drawing.Point(12, 415);
+            this.ExportToPdfButton.Location = new System.Drawing.Point(27, 111);
             this.ExportToPdfButton.Name = "ExportToPdfButton";
-            this.ExportToPdfButton.Size = new System.Drawing.Size(75, 23);
+            this.ExportToPdfButton.Size = new System.Drawing.Size(138, 38);
             this.ExportToPdfButton.TabIndex = 7;
             this.ExportToPdfButton.Text = "Exportar";
             this.ExportToPdfButton.UseVisualStyleBackColor = true;
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(209, 259);
             this.Controls.Add(this.ExportToPdfButton);
             this.Controls.Add(this.AlertLabel);
             this.Controls.Add(this.SaveCvButton);
@@ -122,7 +122,8 @@
             this.Controls.Add(this.EmailTextbox);
             this.Controls.Add(this.NameTextbox);
             this.Name = "CvView";
-            this.Text = "CvView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cv";
             this.ResumeLayout(false);
             this.PerformLayout();
 

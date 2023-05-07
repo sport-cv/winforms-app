@@ -38,7 +38,7 @@
             // 
             // ClubNameTextbox
             // 
-            this.ClubNameTextbox.Location = new System.Drawing.Point(228, 172);
+            this.ClubNameTextbox.Location = new System.Drawing.Point(43, 53);
             this.ClubNameTextbox.Name = "ClubNameTextbox";
             this.ClubNameTextbox.Size = new System.Drawing.Size(100, 20);
             this.ClubNameTextbox.TabIndex = 0;
@@ -46,17 +46,17 @@
             // ClubNameLabel
             // 
             this.ClubNameLabel.AutoSize = true;
-            this.ClubNameLabel.Location = new System.Drawing.Point(142, 172);
+            this.ClubNameLabel.Location = new System.Drawing.Point(40, 26);
             this.ClubNameLabel.Name = "ClubNameLabel";
-            this.ClubNameLabel.Size = new System.Drawing.Size(80, 13);
+            this.ClubNameLabel.Size = new System.Drawing.Size(83, 13);
             this.ClubNameLabel.TabIndex = 1;
-            this.ClubNameLabel.Text = "Nome do Clube";
+            this.ClubNameLabel.Text = "Nome do Clube:";
             // 
             // ExportButton
             // 
-            this.ExportButton.Location = new System.Drawing.Point(253, 251);
+            this.ExportButton.Location = new System.Drawing.Point(43, 159);
             this.ExportButton.Name = "ExportButton";
-            this.ExportButton.Size = new System.Drawing.Size(75, 23);
+            this.ExportButton.Size = new System.Drawing.Size(100, 35);
             this.ExportButton.TabIndex = 2;
             this.ExportButton.Text = "Exportar";
             this.ExportButton.UseVisualStyleBackColor = true;
@@ -64,7 +64,7 @@
             // 
             // SeasonTextbox
             // 
-            this.SeasonTextbox.Location = new System.Drawing.Point(228, 207);
+            this.SeasonTextbox.Location = new System.Drawing.Point(43, 117);
             this.SeasonTextbox.Name = "SeasonTextbox";
             this.SeasonTextbox.Size = new System.Drawing.Size(100, 20);
             this.SeasonTextbox.TabIndex = 3;
@@ -72,19 +72,19 @@
             // SeasonLabel
             // 
             this.SeasonLabel.AutoSize = true;
-            this.SeasonLabel.Location = new System.Drawing.Point(187, 207);
+            this.SeasonLabel.Location = new System.Drawing.Point(40, 91);
             this.SeasonLabel.Name = "SeasonLabel";
-            this.SeasonLabel.Size = new System.Drawing.Size(38, 13);
+            this.SeasonLabel.Size = new System.Drawing.Size(41, 13);
             this.SeasonLabel.TabIndex = 4;
-            this.SeasonLabel.Text = "Época";
+            this.SeasonLabel.Text = "Época:";
             // 
             // ExitButton
             // 
-            this.ExitButton.Location = new System.Drawing.Point(713, 415);
+            this.ExitButton.Location = new System.Drawing.Point(43, 200);
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(75, 23);
+            this.ExitButton.Size = new System.Drawing.Size(100, 34);
             this.ExitButton.TabIndex = 5;
-            this.ExitButton.Text = "Sair";
+            this.ExitButton.Text = "Voltar";
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(189, 258);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.SeasonLabel);
             this.Controls.Add(this.SeasonTextbox);
@@ -100,7 +100,8 @@
             this.Controls.Add(this.ClubNameLabel);
             this.Controls.Add(this.ClubNameTextbox);
             this.Name = "PdfView";
-            this.Text = "PdfView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Criar Pdf";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -34,13 +34,16 @@
             this.ExportToPdfButton = new System.Windows.Forms.Button();
             this.EditCVButton = new System.Windows.Forms.Button();
             this.SaveFileButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // OpenFileButton
             // 
-            this.OpenFileButton.Location = new System.Drawing.Point(53, 33);
+            this.OpenFileButton.Location = new System.Drawing.Point(55, 37);
             this.OpenFileButton.Name = "OpenFileButton";
-            this.OpenFileButton.Size = new System.Drawing.Size(75, 45);
+            this.OpenFileButton.Size = new System.Drawing.Size(108, 45);
             this.OpenFileButton.TabIndex = 0;
             this.OpenFileButton.Text = "Abrir Ficheiro";
             this.OpenFileButton.UseVisualStyleBackColor = true;
@@ -49,16 +52,16 @@
             // CvListbox
             // 
             this.CvListbox.FormattingEnabled = true;
-            this.CvListbox.Location = new System.Drawing.Point(134, 33);
+            this.CvListbox.Location = new System.Drawing.Point(12, 66);
             this.CvListbox.Name = "CvListbox";
-            this.CvListbox.Size = new System.Drawing.Size(120, 238);
+            this.CvListbox.Size = new System.Drawing.Size(141, 173);
             this.CvListbox.TabIndex = 1;
             // 
             // NewCvButton
             // 
-            this.NewCvButton.Location = new System.Drawing.Point(260, 224);
+            this.NewCvButton.Location = new System.Drawing.Point(12, 296);
             this.NewCvButton.Name = "NewCvButton";
-            this.NewCvButton.Size = new System.Drawing.Size(75, 47);
+            this.NewCvButton.Size = new System.Drawing.Size(141, 47);
             this.NewCvButton.TabIndex = 2;
             this.NewCvButton.Text = "Novo CV";
             this.NewCvButton.UseVisualStyleBackColor = true;
@@ -66,9 +69,9 @@
             // 
             // ExportToPdfButton
             // 
-            this.ExportToPdfButton.Location = new System.Drawing.Point(134, 277);
+            this.ExportToPdfButton.Location = new System.Drawing.Point(12, 391);
             this.ExportToPdfButton.Name = "ExportToPdfButton";
-            this.ExportToPdfButton.Size = new System.Drawing.Size(120, 40);
+            this.ExportToPdfButton.Size = new System.Drawing.Size(141, 47);
             this.ExportToPdfButton.TabIndex = 3;
             this.ExportToPdfButton.Text = "Exportar PDF (todos)";
             this.ExportToPdfButton.UseVisualStyleBackColor = true;
@@ -76,9 +79,9 @@
             // 
             // EditCVButton
             // 
-            this.EditCVButton.Location = new System.Drawing.Point(260, 33);
+            this.EditCVButton.Location = new System.Drawing.Point(12, 245);
             this.EditCVButton.Name = "EditCVButton";
-            this.EditCVButton.Size = new System.Drawing.Size(75, 45);
+            this.EditCVButton.Size = new System.Drawing.Size(141, 45);
             this.EditCVButton.TabIndex = 4;
             this.EditCVButton.Text = "Abrir CV";
             this.EditCVButton.UseVisualStyleBackColor = true;
@@ -86,28 +89,52 @@
             // 
             // SaveFileButton
             // 
-            this.SaveFileButton.Location = new System.Drawing.Point(52, 224);
+            this.SaveFileButton.Location = new System.Drawing.Point(55, 88);
             this.SaveFileButton.Name = "SaveFileButton";
-            this.SaveFileButton.Size = new System.Drawing.Size(75, 46);
+            this.SaveFileButton.Size = new System.Drawing.Size(108, 46);
             this.SaveFileButton.TabIndex = 5;
             this.SaveFileButton.Text = "Guardar Ficheiro";
             this.SaveFileButton.UseVisualStyleBackColor = true;
             this.SaveFileButton.Click += new System.EventHandler(this.SaveFileButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 25);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Lista de Cv\'s";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.OpenFileButton);
+            this.groupBox1.Controls.Add(this.SaveFileButton);
+            this.groupBox1.Location = new System.Drawing.Point(253, 131);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(219, 172);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Json Files";
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.SaveFileButton);
+            this.ClientSize = new System.Drawing.Size(508, 450);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.EditCVButton);
             this.Controls.Add(this.ExportToPdfButton);
             this.Controls.Add(this.NewCvButton);
             this.Controls.Add(this.CvListbox);
-            this.Controls.Add(this.OpenFileButton);
             this.Name = "MainView";
-            this.Text = "MainView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "SportCV";
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -119,5 +146,7 @@
         private System.Windows.Forms.Button ExportToPdfButton;
         private System.Windows.Forms.Button EditCVButton;
         private System.Windows.Forms.Button SaveFileButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
