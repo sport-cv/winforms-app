@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace SportCv.Models
@@ -26,15 +27,26 @@ namespace SportCv.Models
         public void ReadFile(string filePath)
         {
             var jsonText = File.ReadAllText(filePath);
-            var list = JsonConvert.DeserializeObject<IEnumerable<Cv>>(jsonText);
-
-            if (list.Count() == 0)
+            // Tenta desserializar a string em uma lista de objetos Cv
+            try
             {
-                throw new EmptyListException("Não foram carregados Cvs.");
+                var list = JsonConvert.DeserializeObject<IEnumerable<Cv>>(jsonText);
+                // Se chegou aqui sem gerar exceção, a estrutura do JSON é compatível com a lista de objetos Cv
+
+                if (list.Count() == 0)
+                {
+                    throw new EmptyListException("Não foram carregados Cvs.");
+                }
+
+                _cvModel.ResetList(list);
+                OnFileLoaded();
+            }
+            catch (JsonException ex)
+            {
+                // Se gerou exceção, a estrutura do JSON não é compatível com a lista de objetos Cv
+                MessageBox.Show("Erro ao desserializar JSON: " + ex.Message);
             }
 
-            _cvModel.ResetList(list);                
-            OnFileLoaded();
         }
 
         public void WriteFile(string fileName)
