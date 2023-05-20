@@ -58,8 +58,13 @@
     <Compile Include="Controllers\CvController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\PdfController.cs" />
+    <Compile Include="Entities\CoachExperience.cs" />
     <Compile Include="Entities\Cv.cs" />
+    <Compile Include="Entities\Experience.cs" />
     <Compile Include="Entities\Header.cs" />
+    <Compile Include="Entities\IExperience.cs" />
+    <Compile Include="Entities\PlayerExperience.cs" />
+    <Compile Include="Entities\StaffExperience.cs" />
     <Compile Include="Exceptions\EmptyListException.cs" />
     <Compile Include="Models\CvModel.cs" />
     <Compile Include="Models\JsonModel.cs" />
@@ -71,6 +76,12 @@
     </Compile>
     <Compile Include="Views\CvView.Designer.cs">
       <DependentUpon>CvView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExperienceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ExperienceView.Designer.cs">
+      <DependentUpon>ExperienceView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
@@ -95,6 +106,9 @@
     </Compile>
     <EmbeddedResource Include="Views\CvView.resx">
       <DependentUpon>CvView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ExperienceView.resx">
+      <DependentUpon>ExperienceView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>

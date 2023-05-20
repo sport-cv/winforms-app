@@ -28,10 +28,11 @@ namespace SportCv
             var mainView = new MainView(cvModel);
             var cvView = new CvView(cvModel);
             var pdfView = new PdfView();
+            var experienceView = new ExperienceView();
 
 
             var mainController = new MainController(mainView, fileModel);
-            _ = new CvController(cvView, cvModel, mainView);
+            _ = new CvController(cvView, cvModel, mainView, experienceView);
             _ = new PdfController(pdfView, pdfModel, mainView, cvView);
 
             mainController.Execute();
