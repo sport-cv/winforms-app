@@ -1,6 +1,8 @@
-﻿using SportCv.Entities;
+﻿using SportCv.Controllers;
+using SportCv.Entities;
 using SportCv.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,22 +18,27 @@ namespace SportCv.Views
     public partial class CvView : Form
     {
         private CvModel _cvModel;
+        private IList<IExperience>  _history;
 
         public delegate void SaveCvHandler(Cv cv);
         public event SaveCvHandler OnSaveCv;
 
         public event Action OnExit;
 
-        public delegate void EditExperienceHandler(string season);
-        public event EditExperienceHandler OnEditExperience;
-
         public delegate void ExportToPdfHandler(string idToExport);
         public event ExportToPdfHandler OnExportToPdf;
+
+        public delegate void EditExperienceHandle(IExperience experience);
+        public event EditExperienceHandle OnEditExperience;
+
+        public delegate void NewExperienceHandler(IExperience type);
+        public NewExperienceHandler OnNewExperience;
 
         public CvView(CvModel cvModel)
         {
             InitializeComponent();
             _cvModel = cvModel;
+            _history = new List<IExperience>();
         }
 
         private void SaveCvButton_Click(object sender, EventArgs e)
@@ -39,7 +46,8 @@ namespace SportCv.Views
             var cv = new Cv
             {
                 Name = NameTextbox.Text,
-                Email = EmailTextbox.Text
+                Email = EmailTextbox.Text,
+                History = _history
             };
 
             OnSaveCv(cv);
@@ -58,17 +66,20 @@ namespace SportCv.Views
         public void RefreshControls(string cvId)
         {
             var cv = _cvModel.GetCv(cvId);
-            
+
+            _history = cv.History.ToList();
+
             NameTextbox.Text = cv.Name;
             EmailTextbox.Text = cv.Email;
-            var historyListViewItems = cv.History.Select(exp => exp.ConvertToListViewItem());
-            HistoryListView.Items.AddRange(historyListViewItems.ToArray());
+
+            RefreshExperience();
         }
 
         public void ClearControls()
         {
             NameTextbox.Text = "";
             EmailTextbox.Text = "";
+            HistoryListView.Items.Clear();
         }
 
         public void SaveAlert()
@@ -93,7 +104,42 @@ namespace SportCv.Views
             {
                 return;
             }
-            MessageBox.Show(HistoryListView.SelectedItems[0].Text);
+
+            OnEditExperience(_history[HistoryListView.SelectedItems[0].Index]);
+        }
+
+        public void RefreshExperience()
+        {
+            var historyListViewItems = _history.Select(exp => exp.ConvertToListViewItem());
+            HistoryListView.Items.Clear();
+            HistoryListView.Items.AddRange(historyListViewItems.ToArray());
+        }
+
+        private void AddHistoryButton_Click(object sender, EventArgs e)
+        {
+            IExperience experience = null;
+            foreach (var item in this.Controls.OfType<RadioButton>())
+            {
+                if(!item.Checked)
+                {
+                    continue;
+                }
+
+                switch (item.Name)
+                {
+                    case var name when name.StartsWith("Player"):
+                        experience = new PlayerExperience();
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            }
+
+            if (experience != null) {
+                _history.Add(experience);
+                OnNewExperience(experience);
+            }
         }
     }
 }

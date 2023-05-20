@@ -44,7 +44,7 @@
             this.AddHistoryButton = new System.Windows.Forms.Button();
             this.PlayerRadioButton = new System.Windows.Forms.RadioButton();
             this.CoachRadioButton = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.StaffRadioButton = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // NameTextbox
@@ -172,10 +172,12 @@
             this.AddHistoryButton.TabIndex = 10;
             this.AddHistoryButton.Text = "Adicionar";
             this.AddHistoryButton.UseVisualStyleBackColor = true;
+            this.AddHistoryButton.Click += new System.EventHandler(this.AddHistoryButton_Click);
             // 
             // PlayerRadioButton
             // 
             this.PlayerRadioButton.AutoSize = true;
+            this.PlayerRadioButton.Checked = true;
             this.PlayerRadioButton.Location = new System.Drawing.Point(34, 371);
             this.PlayerRadioButton.Name = "PlayerRadioButton";
             this.PlayerRadioButton.Size = new System.Drawing.Size(74, 21);
@@ -196,23 +198,23 @@
             this.CoachRadioButton.Text = "Treinador";
             this.CoachRadioButton.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // StaffRadioButton
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(207, 372);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(68, 20);
-            this.radioButton3.TabIndex = 13;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Diretor";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.StaffRadioButton.AutoSize = true;
+            this.StaffRadioButton.Location = new System.Drawing.Point(207, 372);
+            this.StaffRadioButton.Name = "StaffRadioButton";
+            this.StaffRadioButton.Size = new System.Drawing.Size(68, 20);
+            this.StaffRadioButton.TabIndex = 13;
+            this.StaffRadioButton.TabStop = true;
+            this.StaffRadioButton.Text = "Diretor";
+            this.StaffRadioButton.UseVisualStyleBackColor = true;
             // 
             // CvView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 596);
-            this.Controls.Add(this.radioButton3);
+            this.Controls.Add(this.StaffRadioButton);
             this.Controls.Add(this.CoachRadioButton);
             this.Controls.Add(this.PlayerRadioButton);
             this.Controls.Add(this.AddHistoryButton);
@@ -253,6 +255,6 @@
         private System.Windows.Forms.Button AddHistoryButton;
         private System.Windows.Forms.RadioButton PlayerRadioButton;
         private System.Windows.Forms.RadioButton CoachRadioButton;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton StaffRadioButton;
     }
 }

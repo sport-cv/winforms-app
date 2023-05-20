@@ -8,6 +8,10 @@ namespace SportCv.Entities
 {
     public class PlayerExperience : Experience
     {
+        public PlayerExperience() : base(new Season(), string.Empty, "Jogador")
+        {
+        }
+
         public PlayerExperience(Season season, string club, int goals, int gamesPlayed) : base(season, club, "Jogador")
         {
             Goals = goals;
