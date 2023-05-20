@@ -36,11 +36,12 @@
             this.RoleTextbox = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.SpecificFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // ClubTextbox
             // 
-            this.ClubTextbox.Location = new System.Drawing.Point(12, 85);
+            this.ClubTextbox.Location = new System.Drawing.Point(12, 133);
             this.ClubTextbox.Name = "ClubTextbox";
             this.ClubTextbox.Size = new System.Drawing.Size(204, 22);
             this.ClubTextbox.TabIndex = 0;
@@ -48,7 +49,7 @@
             // SeasonCombobox
             // 
             this.SeasonCombobox.FormattingEnabled = true;
-            this.SeasonCombobox.Location = new System.Drawing.Point(12, 28);
+            this.SeasonCombobox.Location = new System.Drawing.Point(12, 78);
             this.SeasonCombobox.Name = "SeasonCombobox";
             this.SeasonCombobox.Size = new System.Drawing.Size(204, 24);
             this.SeasonCombobox.TabIndex = 1;
@@ -56,7 +57,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 16);
             this.label1.TabIndex = 2;
@@ -65,7 +66,7 @@
             // ClubLabel
             // 
             this.ClubLabel.AutoSize = true;
-            this.ClubLabel.Location = new System.Drawing.Point(9, 66);
+            this.ClubLabel.Location = new System.Drawing.Point(9, 114);
             this.ClubLabel.Name = "ClubLabel";
             this.ClubLabel.Size = new System.Drawing.Size(42, 16);
             this.ClubLabel.TabIndex = 3;
@@ -74,7 +75,7 @@
             // RoleLabel
             // 
             this.RoleLabel.AutoSize = true;
-            this.RoleLabel.Location = new System.Drawing.Point(13, 129);
+            this.RoleLabel.Location = new System.Drawing.Point(12, 9);
             this.RoleLabel.Name = "RoleLabel";
             this.RoleLabel.Size = new System.Drawing.Size(52, 16);
             this.RoleLabel.TabIndex = 4;
@@ -83,14 +84,14 @@
             // RoleTextbox
             // 
             this.RoleTextbox.Enabled = false;
-            this.RoleTextbox.Location = new System.Drawing.Point(12, 149);
+            this.RoleTextbox.Location = new System.Drawing.Point(12, 28);
             this.RoleTextbox.Name = "RoleTextbox";
             this.RoleTextbox.Size = new System.Drawing.Size(204, 22);
             this.RoleTextbox.TabIndex = 5;
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(12, 372);
+            this.SaveButton.Location = new System.Drawing.Point(12, 386);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(204, 23);
             this.SaveButton.TabIndex = 6;
@@ -100,7 +101,7 @@
             // 
             // ExitButton
             // 
-            this.ExitButton.Location = new System.Drawing.Point(12, 402);
+            this.ExitButton.Location = new System.Drawing.Point(12, 415);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(204, 23);
             this.ExitButton.TabIndex = 7;
@@ -108,11 +109,19 @@
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
+            // SpecificFlowLayout
+            // 
+            this.SpecificFlowLayout.Location = new System.Drawing.Point(12, 161);
+            this.SpecificFlowLayout.Name = "SpecificFlowLayout";
+            this.SpecificFlowLayout.Size = new System.Drawing.Size(200, 219);
+            this.SpecificFlowLayout.TabIndex = 8;
+            // 
             // ExperienceView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(228, 450);
+            this.Controls.Add(this.SpecificFlowLayout);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.RoleTextbox);
@@ -138,5 +147,6 @@
         private System.Windows.Forms.TextBox RoleTextbox;
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.FlowLayoutPanel SpecificFlowLayout;
     }
 }

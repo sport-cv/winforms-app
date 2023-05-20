@@ -29,6 +29,8 @@ namespace SportCv.Controllers
             _view.OnExit += HideView;
             _view.OnEditExperience += EditExperience;
             _view.OnNewExperience += EditExperience;
+
+            _view.OnExportToPdf += HideExperience;
             
             _model.OnSaveSuccess += _view.SaveAlert;
 
@@ -36,6 +38,11 @@ namespace SportCv.Controllers
             _mainView.OnNewCv += NewCv;
 
             _experienceView.OnExperienceUpdated += _view.RefreshExperience;
+        }
+
+        private void HideExperience(string idToExport)
+        {
+            _experienceView.Hide();
         }
 
         private void EditExperience(IExperience experience)

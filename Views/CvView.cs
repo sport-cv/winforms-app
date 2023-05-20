@@ -130,6 +130,12 @@ namespace SportCv.Views
                     case var name when name.StartsWith("Player"):
                         experience = new PlayerExperience();
                         break;
+                    case var name when name.StartsWith("Coach"):
+                        experience = new CoachExperience();
+                        break;
+                    case var name when name.StartsWith("Staff"):
+                        experience = new StaffExperience();
+                        break;
                     default:
                         break;
                 }

@@ -32,6 +32,17 @@ namespace SportCv.Views
             SeasonCombobox.SelectedIndex = experience.Season.StartYear < START_SEASON ? -1 : SeasonCombobox.FindString(_currentExperience.Season.StartYear.ToString());
             ClubTextbox.Text = _currentExperience.Club;
             RoleTextbox.Text = _currentExperience.Role;
+
+            SpecificFlowLayout.Controls.Clear();
+
+            if (_currentExperience is PlayerExperience playerExperience)
+            {
+                LoadPlayerSpecificControls(playerExperience);
+            }
+            else if (_currentExperience is CoachExperience coachExperience)
+            {
+                LoadCoachSpecificControls(coachExperience);
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -55,9 +66,9 @@ namespace SportCv.Views
         {
             var seasons = new List<object>();
 
-            for (int i = startYear; i <= DateTime.Now.Year; i++)
+            for (int i = DateTime.Now.Year; i > startYear ; i--)
             {
-                seasons.Add(new { Value = i,  Text = $"{i}/{(i + 1).ToString().Substring(2, 2)}" });
+                seasons.Add(new { Value = i, Text = $"{i}/{(i + 1).ToString().Substring(2, 2)}" });
             }
 
             return seasons.ToArray();
@@ -71,7 +82,90 @@ namespace SportCv.Views
             _currentExperience.Club = ClubTextbox.Text;
             _currentExperience.Role = RoleTextbox.Text;
 
+            if(_currentExperience is PlayerExperience playerExperience)
+            {
+                SavePlayerSpecificData(playerExperience);
+            }
+            else if (_currentExperience is CoachExperience coachExperience)
+            {
+                SaveCoachSpecificData(coachExperience);
+            }
+
             OnExperienceUpdated();
+        }
+
+        public void LoadPlayerSpecificControls(PlayerExperience playerExperience)
+        {
+            var positionLabel = new Label { Name = "PositionLabel", Text = "Posição", AutoSize = true };
+            var positionTextbox = new TextBox { Name = "PositionTextbox", Text = playerExperience.Position };
+            SpecificFlowLayout.Controls.Add(positionLabel);
+            SpecificFlowLayout.Controls.Add(positionTextbox);
+
+            var gamesLabel = new Label { Name = "GamesLabel", Text = "Nr. Jogos", AutoSize = true };
+            var gamesNumeric = new NumericUpDown() { Name = "GamesNumeric", Value = playerExperience.GamesPlayed };
+            SpecificFlowLayout.Controls.Add(gamesLabel);
+            SpecificFlowLayout.Controls.Add(gamesNumeric);
+
+            var goalsLabel = new Label { Name = "GoalsLabel", Text = "Golos Marcados", AutoSize = true };
+            var goalsNumeric = new NumericUpDown() { Name = "GoalsNumeric", Value = playerExperience.Goals };
+            SpecificFlowLayout.Controls.Add(goalsLabel);
+            SpecificFlowLayout.Controls.Add(goalsNumeric);
+        }
+
+        private void SavePlayerSpecificData(PlayerExperience playerExperience)
+        {
+            foreach (Control control in SpecificFlowLayout.Controls)
+            {
+                if (control is TextBox textbox)
+                {
+                    playerExperience.Position = textbox.Text;
+                }
+                else if (control is NumericUpDown numericUpDown)
+                {
+                    switch (numericUpDown.Name)
+                    {
+                        case "GoalsNumeric":
+                            playerExperience.Goals = (int)numericUpDown.Value;
+                            break;
+                        case "GamesNumeric":
+                            playerExperience.GamesPlayed = (int)numericUpDown.Value;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void LoadCoachSpecificControls(CoachExperience coachExperience)
+        {
+            var gamesLabel = new Label { Name = "GamesLabel", Text = "Nr. Jogos", AutoSize = true };
+            var gamesNumeric = new NumericUpDown() { Name = "GamesNumeric", Value = coachExperience.GamesPlayed };
+            SpecificFlowLayout.Controls.Add(gamesLabel);
+            SpecificFlowLayout.Controls.Add(gamesNumeric);
+
+            var victoriesLabel = new Label { Name = "VictoriesLabel", Text = "Nr. Vitórias", AutoSize = true };
+            var victoriesNumeric = new NumericUpDown() { Name = "VictoriesNumeric", Value = coachExperience.Victories };
+            SpecificFlowLayout.Controls.Add(victoriesLabel);
+            SpecificFlowLayout.Controls.Add(victoriesNumeric);
+        }
+
+        private void SaveCoachSpecificData(CoachExperience coachExperience)
+        {
+            foreach (Control control in SpecificFlowLayout.Controls)
+            {
+                switch (control.Name)
+                {
+                    case "VictoriesNumeric":
+                        coachExperience.Victories = int.Parse(control.Text);
+                        break;
+                    case "GamesNumeric":
+                        coachExperience.GamesPlayed = int.Parse(control.Text);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

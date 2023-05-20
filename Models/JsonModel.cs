@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SportCv.Entities;
 using SportCv.Exceptions;
 using System;
@@ -27,10 +28,15 @@ namespace SportCv.Models
         public void ReadFile(string filePath)
         {
             var jsonText = File.ReadAllText(filePath);
+
             // Tenta desserializar a string em uma lista de objetos Cv
             try
             {
-                var list = JsonConvert.DeserializeObject<IEnumerable<Cv>>(jsonText);
+                JsonSerializerSettings settings = new JsonSerializerSettings
+                {
+                    Converters = new List<JsonConverter> { new ExperienceConverter() }
+                };
+                var list = JsonConvert.DeserializeObject<IEnumerable<Cv>>(jsonText, settings);
                 // Se chegou aqui sem gerar exceção, a estrutura do JSON é compatível com a lista de objetos Cv
 
                 if (list.Count() == 0)
@@ -58,5 +64,37 @@ namespace SportCv.Models
 
             OnFileSaved();
         }
+
+
+    private class ExperienceConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return typeof(IExperience).IsAssignableFrom(objectType);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            JObject jsonObject = JObject.Load(reader);
+            string role = jsonObject["Role"]?.ToString();
+
+            switch (role)
+            {
+                case "Jogador":
+                    return JsonConvert.DeserializeObject<PlayerExperience>(jsonObject.ToString());
+                case "Treinador":
+                    return JsonConvert.DeserializeObject<CoachExperience>(jsonObject.ToString());
+                case "Diretor":
+                    return JsonConvert.DeserializeObject<StaffExperience>(jsonObject.ToString());
+                default:
+                    throw new NotSupportedException($"Não é possível converter experiência para {role}");
+            }
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+    }
     }
 }

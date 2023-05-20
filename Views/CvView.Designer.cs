@@ -160,9 +160,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(37, 135);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 16);
+            this.label1.Size = new System.Drawing.Size(300, 16);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Histórico Desportivo";
+            this.label1.Text = "Histórico Desportivo (clicar na época para editar)";
             // 
             // AddHistoryButton
             // 
