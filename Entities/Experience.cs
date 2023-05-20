@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SportCv.Entities
 {
@@ -25,9 +26,14 @@ namespace SportCv.Entities
             return $"{ShortSeasonDisplay()} | {Club} | {Role}";
         }
 
-        internal String ShortSeasonDisplay()
+        public ListViewItem ConvertToListViewItem()
         {
-            int decade = Season.EndYear > 1999 ? Season.EndYear - 2000 : Season.EndYear - 1900;
+            return new ListViewItem(new string[] { ShortSeasonDisplay(), Club, Role });
+        }
+
+        internal string ShortSeasonDisplay()
+        {
+            string decade = Season.EndYear.ToString().Substring(2,2);
             return $"{Season.StartYear}/{decade}";
         }
     }

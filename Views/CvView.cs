@@ -22,6 +22,9 @@ namespace SportCv.Views
 
         public event Action OnExit;
 
+        public delegate void EditExperienceHandler(string season);
+        public event EditExperienceHandler OnEditExperience;
+
         public delegate void ExportToPdfHandler(string idToExport);
         public event ExportToPdfHandler OnExportToPdf;
 
@@ -58,6 +61,8 @@ namespace SportCv.Views
             
             NameTextbox.Text = cv.Name;
             EmailTextbox.Text = cv.Email;
+            var historyListViewItems = cv.History.Select(exp => exp.ConvertToListViewItem());
+            HistoryListView.Items.AddRange(historyListViewItems.ToArray());
         }
 
         public void ClearControls()
@@ -80,6 +85,15 @@ namespace SportCv.Views
                 e.Cancel = true;
                 OnExit();
             }
+        }
+
+        private void HistoryListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(HistoryListView.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            MessageBox.Show(HistoryListView.SelectedItems[0].Text);
         }
     }
 }
