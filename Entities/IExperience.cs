@@ -14,6 +14,6 @@ namespace SportCv.Entities
         String Role { get; set; }
         String ShortDescription();
         String FullDescription();
-        ListViewItem ConvertToListViewItem();
+        ListViewItem ToListViewItem();
     }
 }
