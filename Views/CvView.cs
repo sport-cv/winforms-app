@@ -110,7 +110,7 @@ namespace SportCv.Views
 
         public void RefreshExperience()
         {
-            var historyListViewItems = _history.Select(exp => exp.ConvertToListViewItem());
+            var historyListViewItems = _history.Select(exp => exp.ToListViewItem());
             HistoryListView.Items.Clear();
             HistoryListView.Items.AddRange(historyListViewItems.ToArray());
         }

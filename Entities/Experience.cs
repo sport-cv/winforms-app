@@ -26,7 +26,7 @@ namespace SportCv.Entities
             return $"{ShortSeasonDisplay()} | {Club} | {Role}";
         }
 
-        public ListViewItem ConvertToListViewItem()
+        public ListViewItem ToListViewItem()
         {
             return new ListViewItem(new string[] { ShortSeasonDisplay(), Club, Role });
         }
